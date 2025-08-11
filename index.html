@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Automotive Dealer - Get Your Quote</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0d1421 0%, #1e3a5f 40%, #2c5282 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M10 10h30v30h-30z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00bcd4, #2196f3, #3f51b5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            color: #00bcd4;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-accent {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(0, 188, 212, 0.2);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+        }
+
+        /* Form Section */
+        .form-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            min-height: calc(100vh - 300px - 120px);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        }
+
+        .form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00bcd4, #2196f3);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            color: #1a1a1a;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+
+        .form-header h2 strong {
+            font-weight: 600;
+            color: #2c5282;
+        }
+
+        .form-header p {
+            color: #64748b;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: #374151;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            background: #fafbfc;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: #2c5282;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+        }
+
+        .checkbox-group {
+            margin: 2rem 0;
+            padding: 1.8rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            border-left: 4px solid #2c5282;
+        }
+
+        .checkbox-group h3 {
+            margin-bottom: 1.2rem;
+            color: #2c5282;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 0.8rem;
+            margin-top: 0.2rem;
+            transform: scale(1.1);
+            accent-color: #2c5282;
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            color: #475569;
+            font-weight: 400;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .required {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, #2c5282, #1e3a5f);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1.5rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(44, 82, 130, 0.3);
+            background: linear-gradient(135deg, #1e3a5f, #2c5282);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0d1421;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2.5rem 0;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #334155, transparent);
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .footer a {
+            color: #00bcd4;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: #26c6da;
+            text-decoration: underline;
+        }
+
+        .footer-brand {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .hero {
+                height: 250px;
+            }
+
+            .form-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .checkbox-group {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success states */
+        .input-success {
+            border-color: #10b981 !important;
+            background: #f0fdf4 !important;
+        }
+
+        .input-error {
+            border-color: #dc2626 !important;
+            background: #fef2f2 !important;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-accent">Authorized Premium Dealer</div>
+                <h1>Find Your Perfect <strong>Vehicle</strong></h1>
+                <p>Browse our extensive inventory of new and certified pre-owned vehicles. Expert financing options and professional service from our award-winning dealership team.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Get Your <strong>Quote</strong></h2>
+                    <p>Submit your details and our sales team will contact you within 24 hours with personalized options</p>
+                </div>
+
+                <form id="contactForm" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <h3>Privacy & Marketing Consent</h3>
+                        
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="consent1" name="consent1" required>
+                            <label for="consent1">
+                                <span class="required">*</span> I agree to the processing of my personal data for the purpose of receiving a vehicle quote and further contact regarding automotive sales and services.
+                            </label>
+                        </div>
+
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="consent2" name="consent2">
+                            <label for="consent2">
+                                I agree to receive promotional offers about new vehicles, special deals, and automotive services via email and SMS.
+                            </label>
+                        </div>
+
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="consent3" name="consent3">
+                            <label for="consent3">
+                                I agree to receive phone calls from sales representatives regarding vehicle quotes, financing options, and test drive appointments.
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Get My Quote
+                        <span class="loading" id="loading"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <div class="footer-brand">Premium Automotive Dealer</div>
+                <p>&copy; 2025 Your Dealership Name. All rights reserved.</p>
+                <p>
+                    <a href="#privacy">Privacy Policy</a> | 
+                    <a href="#terms">Terms of Service</a> | 
+                    <a href="#inventory">View Inventory</a> | 
+                    <a href="#contact">Contact Us</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check required consent
+            const consent1 = document.getElementById('consent1');
+            if (!consent1.checked) {
+                alert('You must agree to data processing to continue with your quote request.');
+                return;
+            }
+
+            // Validate all required fields
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone'];
+            let allValid = true;
+
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('input-error');
+                    allValid = false;
+                } else {
+                    field.classList.remove('input-error');
+                    field.classList.add('input-success');
+                }
+            });
+
+            if (!allValid) {
+                alert('Please fill in all required fields to get your quote.');
+                return;
+            }
+
+            // Show loading
+            const button = document.querySelector('.submit-btn');
+            const loading = document.getElementById('loading');
+            button.style.opacity = '0.7';
+            button.style.cursor = 'not-allowed';
+            button.innerHTML = 'Processing... <span class="loading" id="loading"></span>';
+            document.getElementById('loading').style.display = 'inline-block';
+
+            // Simulate submission (3 seconds)
+            setTimeout(() => {
+                // Hide loading
+                button.style.opacity = '1';
+                button.style.cursor = 'pointer';
+                button.innerHTML = 'Get My Quote';
+                
+                // Show success message
+                alert('Thank you for your interest! Our sales team will contact you within 24 hours with your personalized vehicle quote and available options.');
+                
+                // Clear form
+                document.getElementById('contactForm').reset();
+                
+                // Remove validation classes
+                document.querySelectorAll('.input-success, .input-error').forEach(el => {
+                    el.classList.remove('input-success', 'input-error');
+                });
+            }, 3000);
+        });
+
+        // Real-time field validation
+        const inputs = document.querySelectorAll('input[required]');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.classList.add('input-error');
+                    this.classList.remove('input-success');
+                } else {
+                    this.classList.remove('input-error');
+                    this.classList.add('input-success');
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('input-error');
+                    this.style.borderColor = '#2c5282';
+                }
+            });
+        });
+
+        // Email validation
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.value) && this.value.trim()) {
+                this.classList.add('input-error');
+                this.classList.remove('input-success');
+            } else if (this.value.trim()) {
+                this.classList.remove('input-error');
+                this.classList.add('input-success');
+            }
+        });
+
+        // Phone validation and formatting
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function() {
+            // Format phone number
+            this.value = this.value.replace(/[^\d+\s-()]/g, '');
+        });
+
+        phoneInput.addEventListener('blur', function() {
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{9,}$/;
+            if (!phoneRegex.test(this.value) && this.value.trim()) {
+                this.classList.add('input-error');
+                this.classList.remove('input-success');
+            } else if (this.value.trim()) {
+                this.classList.remove('input-error');
+                this.classList.add('input-success');
+            }
+        });
+
+        // Smooth scrolling for better UX
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
