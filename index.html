@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Automotive Dealer - Get Your Quote</title>
+    <title>Makurat Auto - Twój następny samochód czeka</title>
     <style>
         * {
             margin: 0;
@@ -12,11 +12,80 @@
         }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 30vh;
+            background: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        .cta-btn.primary {
+            background: #007bff;
+            border-color: #007bff;
+        }
+
+        .cta-btn.primary:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Contact Section */
+        .contact-section {
             background: #f8f9fa;
-            min-height: 100vh;
+            padding: 80px 0;
         }
 
         .container {
@@ -25,611 +94,201 @@
             padding: 0 20px;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 40%, #4a4a4a 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="metallic" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="2" fill="rgba(192,192,192,0.08)"/><rect x="10" y="10" width="30" height="30" fill="none" stroke="rgba(192,192,192,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23metallic)"/></svg>');
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #dc2626, #b91c1c, #991b1b);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 strong {
-            font-weight: 700;
-            color: #dc2626;
-            text-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .hero-accent {
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            border-radius: 25px;
-            font-size: 0.9rem;
+        .contact-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #333;
             font-weight: 600;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(220, 38, 38, 0.3);
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+            letter-spacing: 1px;
         }
 
-        /* Marketing Section */
-        .marketing-section {
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .contact-info strong {
+            color: #333;
+        }
+
+        .map-container {
             height: 300px;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            background: #e9ecef;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .marketing-placeholder {
-            width: 100%;
-            max-width: 800px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-align: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .marketing-placeholder::before {
-            content: '🖼️';
-            font-size: 2rem;
-            margin-right: 1rem;
+            color: #666;
+            font-style: italic;
         }
 
         /* Form Section */
         .form-section {
-            background: #f8f9fa;
-            padding: 4rem 0;
-            min-height: calc(100vh - 600px - 120px);
-            position: relative;
+            background: white;
+            padding: 80px 0;
         }
 
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-        }
-
-        .forms-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .form-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .form-container {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            position: relative;
-        }
-
-        .form-container.primary {
-            border: 3px solid #dc2626;
-            box-shadow: 0 8px 40px rgba(220, 38, 38, 0.15);
-            transform: scale(1.02);
-            background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
-            transition: all 0.3s ease;
-        }
-
-        .form-container.primary:hover {
-            box-shadow: 0 12px 50px rgba(220, 38, 38, 0.2);
-            transform: scale(1.03);
-        }
-
-        .form-container.primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #dc2626, #b91c1c);
-            border-radius: 12px 12px 0 0;
-        }
-
-        .form-container.primary::after {
-            content: 'REQUIRED';
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-        }
-
-        .form-container.additional {
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-container.additional::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #2c5282, #1e3a5f);
-            border-radius: 12px 12px 0 0;
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .form-header h2 {
-            color: #1a1a1a;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-            letter-spacing: -0.01em;
-        }
-
-        .form-header h2 strong {
-            font-weight: 600;
-            color: #2c5282;
-        }
-
-        .form-header p {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 25px;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #374151;
+            margin-bottom: 8px;
+            color: #333;
             font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.01em;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        select {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            background: #fafbfc;
-            color: #1a1a1a;
-            font-weight: 400;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
 
-        select {
-            cursor: pointer;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
-        select:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: #dc2626;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            border-color: #007bff;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
         }
 
         .checkbox-group {
-            margin: 1.5rem 0;
-            padding: 1.5rem;
-            background: #f1f5f9;
-            border-radius: 8px;
-            border-left: 4px solid #dc2626;
-        }
-
-        .checkbox-group h3 {
-            margin-bottom: 1rem;
-            color: #dc2626;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-        }
-
-        .checkbox-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 0.8rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
-        .checkbox-item:last-child {
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
             margin-bottom: 0;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            margin-right: 0.6rem;
-            margin-top: 0.15rem;
-            transform: scale(1.1);
-            accent-color: #dc2626;
-        }
-
-        .checkbox-item label {
-            margin-bottom: 0;
-            color: #475569;
-            font-weight: 400;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .required {
-            color: #dc2626;
-            font-weight: 600;
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #dc2626, #991b1b);
+            padding: 15px;
+            background: #007bff;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            border-radius: 4px;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 1rem;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
+            transition: background 0.3s ease;
+            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
-            background: linear-gradient(135deg, #991b1b, #dc2626);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Message Section */
-        .message-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            position: relative;
-            margin-top: 2rem;
-        }
-
-        .message-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #6b7280, #4b5563);
-            border-radius: 12px 12px 0 0;
-        }
-
-        .message-section h3 {
-            color: #1a1a1a;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .message-section p {
-            color: #64748b;
-            font-size: 0.9rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        textarea {
-            width: 100%;
-            height: 200px;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            resize: vertical;
-            background: #fafbfc;
-            color: #1a1a1a;
-            transition: all 0.2s ease;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #6b7280;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
-        }
-
-        textarea::placeholder {
-            color: #9ca3af;
-            font-style: italic;
+            background: #0056b3;
         }
 
         /* Footer */
         .footer {
             background: #1a1a1a;
-            color: #94a3b8;
-            text-align: center;
-            padding: 2.5rem 0;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #4b5563, transparent);
-        }
-
-        .footer p {
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-        }
-
-        .footer a {
-            color: #dc2626;
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.2s ease;
-        }
-
-        .footer a:hover {
-            color: #ef4444;
-            text-decoration: underline;
-        }
-
-        .footer-brand {
-            font-weight: 600;
             color: white;
-            margin-bottom: 0.5rem;
+            padding: 50px 0 30px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #007bff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .marketing-section {
-                height: 250px;
-            }
-
-            .marketing-placeholder {
-                height: 150px;
-                font-size: 1rem;
-            }
-
-            .forms-wrapper {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .form-container {
-                padding: 2rem;
-            }
-
-            .form-container.primary {
-                transform: none;
-                margin-bottom: 1rem;
-            }
-
-            .form-container.primary:hover {
-                transform: none;
-            }
-        }
-
         @media (max-width: 768px) {
-            .marketing-section {
-                height: 200px;
-            }
-
-            .marketing-placeholder {
-                height: 120px;
-                font-size: 0.9rem;
-                margin: 0 1rem;
-            }
-
-            .marketing-placeholder::before {
-                font-size: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .form-container {
-                padding: 1.5rem;
-                margin: 0 0.5rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
             .hero {
-                height: 250px;
+                height: 25vh;
             }
-
-            .form-header h2 {
-                font-size: 1.5rem;
-            }
-
-            .message-section {
-                padding: 1.5rem;
-                margin: 1rem 0.5rem 0;
-            }
-
-            textarea {
-                height: 150px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .form-container {
-                padding: 1.2rem;
-            }
-
+            
             .hero h1 {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
             }
 
-            .checkbox-group {
-                padding: 1rem;
+            .logo {
+                font-size: 1.4rem;
             }
 
-            .message-section {
-                padding: 1.2rem;
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
-        }
 
-        /* Loading animation */
-        .loading {
-            display: none;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top: 2px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 6px;
-        }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Success states */
-        .input-success {
-            border-color: #dc2626 !important;
-            background: #fef2f2 !important;
-        }
-
-        .input-error {
-            border-color: #dc2626 !important;
-            background: #fef2f2 !important;
-        }
-
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -637,199 +296,82 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-accent">Where Craft Meets Technology</div>
-                <h1>Premium <strong>Automotive</strong> Excellence</h1>
-                <p>Experience world-class quality and innovative technology. Our award-winning craftsmanship delivers automotive solutions that exceed international standards and create lasting value.</p>
+        <div class="hero-content">
+            <div class="logo">MAKURAT AUTO</div>
+            <h1>WITAMY W MAKURAT AUTO</h1>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-btn primary">SKONTAKTUJ SIĘ Z NAMI</a>
             </div>
         </div>
     </section>
 
-    <!-- Marketing Section -->
-    <section class="marketing-section">
+    <!-- Contact Section -->
+    <section class="contact-section">
         <div class="container">
-            <div class="marketing-placeholder">
-                Marketing Offer Banner / Graphics Placeholder
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>KONTAKT</h3>
+                    <p><strong>📞</strong> +48 58 123 45 67</p>
+                    <p><strong>✉️</strong> kontakt@makuratauto.pl</p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>GODZINY OTWARCIA</h3>
+                    <p><strong>DZIAŁ SPRZEDAŻY</strong></p>
+                    <p>Pn - pt: 9:00 - 18:00</p>
+                    <p>So: 9:00 - 14:00</p>
+                    <br>
+                    <p><strong>SERWIS</strong></p>
+                    <p><strong>BLACHARNIA - LAKIERNIA</strong></p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>ADRES</h3>
+                    <p>Makurat Auto</p>
+                    <p>ul. Zawodników 2</p>
+                    <p>80-180 Gdańsk</p>
+                    <br>
+                    <p><a href="#" style="color: #007bff;">WYZNACZ TRASĘ</a></p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <p>[ Marketing campaign key visual ]</p>
             </div>
         </div>
     </section>
 
     <!-- Form Section -->
-    <section class="form-section">
+    <section class="form-section" id="contact">
         <div class="container">
-            <div class="forms-wrapper">
-                <!-- Primary Contact Form -->
-                <div class="form-container primary">
-                    <div class="form-header">
-                        <h2>Contact <strong>Information</strong></h2>
-                        <p>Your basic details for quote preparation</p>
-                    </div>
-
-                    <form id="contactForm" action="#" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-
-                        <div class="checkbox-group">
-                            <h3>Privacy & Marketing Consent</h3>
-                            
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="consent1" name="consent1" required>
-                                <label for="consent1">
-                                    <span class="required">*</span> I agree to the processing of my personal data for the purpose of receiving a vehicle quote and further contact regarding automotive sales and services.
-                                </label>
-                            </div>
-
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="consent2" name="consent2">
-                                <label for="consent2">
-                                    I agree to receive promotional offers about new vehicles, special deals, and automotive services via email and SMS.
-                                </label>
-                            </div>
-
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="consent3" name="consent3">
-                                <label for="consent3">
-                                    I agree to receive phone calls from sales representatives regarding vehicle quotes, financing options, and test drive appointments.
-                                </label>
-                            </div>
-                        </div>
-                    </form>
+            <h2 class="form-title">FORMULARZ KONTAKTOWY</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="name">Imię i nazwisko *</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
 
-                <!-- Additional Information Form -->
-                <div class="form-container additional">
-                    <div class="form-header">
-                        <h2>Vehicle <strong>Preferences</strong></h2>
-                        <p>Help us personalize your automotive experience</p>
-                    </div>
-
-                    <form id="additionalForm">
-                        <div class="form-group">
-                            <label for="vehicleType">Vehicle Type Interest</label>
-                            <select id="vehicleType" name="vehicleType">
-                                <option value="">Select vehicle type</option>
-                                <option value="new">New Vehicle</option>
-                                <option value="certified">Certified Pre-Owned</option>
-                                <option value="used">Used Vehicle</option>
-                                <option value="any">Open to Any</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="budgetRange">Budget Range</label>
-                            <select id="budgetRange" name="budgetRange">
-                                <option value="">Select budget range</option>
-                                <option value="under-20k">Under $20,000</option>
-                                <option value="20k-35k">$20,000 - $35,000</option>
-                                <option value="35k-50k">$35,000 - $50,000</option>
-                                <option value="50k-75k">$50,000 - $75,000</option>
-                                <option value="75k-100k">$75,000 - $100,000</option>
-                                <option value="over-100k">Over $100,000</option>
-                            </select>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="financing">Financing Needed</label>
-                                <select id="financing" name="financing">
-                                    <option value="">Select option</option>
-                                    <option value="cash">Cash Purchase</option>
-                                    <option value="finance">Financing</option>
-                                    <option value="lease">Lease</option>
-                                    <option value="unsure">Not Sure</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="timeline">Purchase Timeline</label>
-                                <select id="timeline" name="timeline">
-                                    <option value="">Select timeframe</option>
-                                    <option value="immediate">Within 1 week</option>
-                                    <option value="month">Within 1 month</option>
-                                    <option value="quarter">Within 3 months</option>
-                                    <option value="future">Just browsing</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="preferredBrand">Preferred Brand/Model</label>
-                            <input type="text" id="preferredBrand" name="preferredBrand" placeholder="e.g., Toyota Camry, Honda Accord, etc.">
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="tradeIn">Trade-in Vehicle</label>
-                                <select id="tradeIn" name="tradeIn">
-                                    <option value="">Select option</option>
-                                    <option value="yes">Yes, I have a trade-in</option>
-                                    <option value="no">No trade-in</option>
-                                    <option value="maybe">Maybe</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactTime">Best Contact Time</label>
-                                <select id="contactTime" name="contactTime">
-                                    <option value="">Select time</option>
-                                    <option value="morning">Morning (9 AM - 12 PM)</option>
-                                    <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
-                                    <option value="evening">Evening (5 PM - 8 PM)</option>
-                                    <option value="anytime">Anytime</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="hearAbout">How did you hear about us?</label>
-                            <select id="hearAbout" name="hearAbout">
-                                <option value="">Select source</option>
-                                <option value="google">Google Search</option>
-                                <option value="social">Social Media</option>
-                                <option value="referral">Friend/Family Referral</option>
-                                <option value="advertising">Online Advertising</option>
-                                <option value="dealership">Visited Dealership</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label for="email">Adres e-mail *</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-            </div>
 
-            <!-- Message Section -->
-            <div class="message-section">
-                <h3>Additional Comments & Questions</h3>
-                <p>Tell us more about your specific needs, questions, or any special requirements</p>
-                <textarea 
-                    id="message" 
-                    name="message" 
-                    placeholder="e.g., I'm looking for a family-friendly SUV with good fuel economy. I need it to have all-wheel drive for winter conditions. What financing options do you offer for first-time buyers? When can I schedule a test drive?">
-                </textarea>
-            </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
 
-            <!-- Submit Button -->
-            <div style="text-align: center; margin-top: 2rem;">
-                <button type="submit" class="submit-btn" id="submitAll" style="max-width: 400px;">
-                    Get My Personalized Quote
-                    <span class="loading" id="loading"></span>
-                </button>
+                <div class="form-group">
+                    <label for="message">Treść *</label>
+                    <textarea id="message" name="message" placeholder="Opisz swoje potrzeby..." required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">* Pole wymagane - Wyrażam zgodę na przetwarzanie danych osobowych przez Makurat Auto w celu udzielenia odpowiedzi na zapytanie.</label>
+                </div>
+
+                <button type="submit" class="submit-btn" onclick="submitForm()">WYŚLIJ</button>
             </div>
         </div>
     </section>
@@ -837,149 +379,90 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div>
-                <div class="footer-brand">Premium Automotive Dealer</div>
-                <p>&copy; 2025 Your Dealership Name. All rights reserved.</p>
-                <p>
-                    <a href="#privacy">Privacy Policy</a> | 
-                    <a href="#terms">Terms of Service</a> | 
-                    <a href="#inventory">View Inventory</a> | 
-                    <a href="#contact">Contact Us</a>
-                </p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">MAKURAT AUTO</div>
+                    <p>Katalog samochodów</p>
+                    <p>Serwis</p>
+                    <p>Wynajem</p>
+                    <p>Ubezpieczenia</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Gdańsk - Zawodników 2</h4>
+                    <p>Zawodników 2</p>
+                    <p>80-180 Gdańsk</p>
+                    <p>58 123 45 67</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Gdańsk - Automarket</h4>
+                    <p>Zawodników 1</p>
+                    <p>80-180 Gdańsk</p>
+                    <p>58 987 65 43</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Gdańsk - Elbląska</h4>
+                    <p>Elbląska 98B</p>
+                    <p>80-718 Gdańsk</p>
+                    <p>58 573 58 80</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Jesteśmy częścią <strong>MAKURAT</strong></p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('submitAll').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Check required consent
-            const consent1 = document.getElementById('consent1');
-            if (!consent1.checked) {
-                alert('You must agree to data processing to continue with your quote request.');
-                return;
-            }
-
-            // Validate required fields
-            const requiredFields = ['firstName', 'lastName', 'email', 'phone'];
-            let allValid = true;
-
-            requiredFields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                if (!field.value.trim()) {
-                    field.classList.add('input-error');
-                    allValid = false;
-                } else {
-                    field.classList.remove('input-error');
-                    field.classList.add('input-success');
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
+        });
 
-            if (!allValid) {
-                alert('Please fill in all required contact information fields to get your quote.');
-                return;
-            }
-
-            // Collect all form data
-            const contactData = new FormData(document.getElementById('contactForm'));
-            const additionalData = new FormData(document.getElementById('additionalForm'));
+        // Form submission handler
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
+            const privacy = document.getElementById('privacy').checked;
 
-            // Show loading
-            const button = document.getElementById('submitAll');
-            const loading = document.getElementById('loading');
-            button.style.opacity = '0.7';
-            button.style.cursor = 'not-allowed';
-            button.innerHTML = 'Processing Your Request... <span class="loading" id="loading"></span>';
-            document.getElementById('loading').style.display = 'inline-block';
-
-            // Simulate submission (3 seconds)
-            setTimeout(() => {
-                // Hide loading
-                button.style.opacity = '1';
-                button.style.cursor = 'pointer';
-                button.innerHTML = 'Get My Personalized Quote';
-                
-                // Show success message
-                alert('Thank you for your detailed information! Our automotive specialists will contact you within 24 hours with a personalized vehicle quote tailored to your preferences and budget. We look forward to helping you find your perfect vehicle!');
-                
-                // Clear all forms
-                document.getElementById('contactForm').reset();
-                document.getElementById('additionalForm').reset();
-                document.getElementById('message').value = '';
-                
-                // Remove validation classes
-                document.querySelectorAll('.input-success, .input-error').forEach(el => {
-                    el.classList.remove('input-success', 'input-error');
-                });
-            }, 3000);
-        });
-
-        // Real-time field validation
-        const inputs = document.querySelectorAll('input[required]');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (!this.value.trim()) {
-                    this.classList.add('input-error');
-                    this.classList.remove('input-success');
-                } else {
-                    this.classList.remove('input-error');
-                    this.classList.add('input-success');
-                }
-            });
-
-            input.addEventListener('input', function() {
-                if (this.value.trim()) {
-                    this.classList.remove('input-error');
-                    this.style.borderColor = '#dc2626';
-                }
-            });
-        });
-
-        // Email validation
-        const emailInput = document.getElementById('email');
-        emailInput.addEventListener('blur', function() {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(this.value) && this.value.trim()) {
-                this.classList.add('input-error');
-                this.classList.remove('input-success');
-            } else if (this.value.trim()) {
-                this.classList.remove('input-error');
-                this.classList.add('input-success');
+            if (!name || !email || !message || !privacy) {
+                alert('Proszę wypełnić wszystkie wymagane pola i zaakceptować zgodę na przetwarzanie danych.');
+                return;
             }
-        });
 
-        // Phone validation and formatting
-        const phoneInput = document.getElementById('phone');
-        phoneInput.addEventListener('input', function() {
-            this.value = this.value.replace(/[^\d+\s-()]/g, '');
-        });
-
-        phoneInput.addEventListener('blur', function() {
-            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{9,}$/;
-            if (!phoneRegex.test(this.value) && this.value.trim()) {
-                this.classList.add('input-error');
-                this.classList.remove('input-success');
-            } else if (this.value.trim()) {
-                this.classList.remove('input-error');
-                this.classList.add('input-success');
-            }
-        });
-
-        // Smooth scrolling for better UX
-        if (window.location.hash) {
-            const target = document.querySelector(window.location.hash);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+            // Here you would typically send the data to your server
+            alert('Dziękujemy za wiadomość! Skontaktujemy się z Państwem w ciągu 24 godzin.');
+            
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('message').value = '';
+            document.getElementById('privacy').checked = false;
         }
 
-        // Auto-resize message textarea
-        const messageTextarea = document.getElementById('message');
-        messageTextarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.max(200, this.scrollHeight) + 'px';
+        // Add some interactive effects
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${parallax}px)`;
+            }
         });
     </script>
 </body>
